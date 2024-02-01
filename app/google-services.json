@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1053429153405",
+    "project_id": "ngabers-terserah",
+    "storage_bucket": "ngabers-terserah.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053429153405:android:c826de418f3e9630a07b14",
+        "android_client_info": {
+          "package_name": "org.terserah.ngaber"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPFYktdvPjIhdVAyWueZ8aiVdJdtzebkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
