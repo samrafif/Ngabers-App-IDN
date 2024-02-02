@@ -12,10 +12,6 @@ class MainMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = Firebase.auth
         super.onCreate(savedInstanceState)
-        val currentUser = auth.currentUser
-        if (currentUser == null) {
-            println("Not Logged in")
-        }
         setContentView(R.layout.activity_main_menu)
     }
 }

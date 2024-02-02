@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ngaber</string>
+    <string name="string_logon_email_screenreader">Enter email</string>
+    <string name="string_logon_passwd_screenreader">Enter password</string>
 </resources>
