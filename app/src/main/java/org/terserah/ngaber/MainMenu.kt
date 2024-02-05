@@ -13,5 +13,33 @@ class MainMenu : AppCompatActivity() {
         auth = Firebase.auth
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
+        val firstFragment=FirstFragment()
+        val secondFragment=SecondFragment()
+        val thirdFragment=ThirdFragment()
+        val fourthFragment=FourthFragment()
+
+        setCurrentFragment(firstFragment)
+
+        bottomNavigationView.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.home->setCurrentFragment(firstFragment)
+                R.id.chat->setCurrentFragment(secondFragment)
+                R.id.activity->setCurrentFragment(thirdFragment)
+                R.id.account->setCurrentFragment(fourthFragment)
+
+            }
+            true
+        }
+
+    }
+
+    private fun setCurrentFragment(fragment:Fragment)=
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,fragment)
+            commit()
+        }
+
+}
+
     }
 }

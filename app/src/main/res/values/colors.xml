@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="onboard_text">#6D4D1F</color>
+    <color name="dot_selected">#FF7A00</color>
+    <color name="dot_not_selected">#858585</color>
 </resources>

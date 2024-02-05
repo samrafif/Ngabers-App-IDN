@@ -5,8 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Onboarding">
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/slideViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <Button
+        android:id="@+id/skipButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="skip this part"
+        android:background="@drawable/rounded_orange"
+        android:textColor="#979797"
+        android:fontFamily="@font/inter_light_beta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="50dp"/>
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="next"
+        android:background="@drawable/btn_background"
+        android:padding="-20dp"
+        android:textColor="#979797"
+        android:fontFamily="@font/inter_light_beta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dotIndicator"/>
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="next"
+        android:background="@drawable/btn_background"
+        android:padding="-20dp"
+        android:textColor="#979797"
+        android:fontFamily="@font/inter_light_beta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dotIndicator"/>
+    <LinearLayout
+        android:id="@+id/dotIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@id/skipButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
