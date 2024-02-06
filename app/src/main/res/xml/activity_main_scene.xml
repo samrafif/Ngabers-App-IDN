@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene 
+<MotionScene
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
@@ -36,4 +36,49 @@
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
     </ConstraintSet>
+    <Transition
+        motion:constraintSetEnd="@id/a"
+        motion:constraintSetStart="@id/b"
+        motion:duration="300">
+
+        <OnSwipe
+            motion:dragDirection="dragLeft"
+            motion:touchAnchorId="@id/login"
+            motion:touchAnchorSide="left" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/a">
+        <Constraint android:id="@id/login">
+            <motion:Layout
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+        </Constraint>
+        <Constraint android:id="@id/sign_up">
+            <motion:Layout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </Constraint>
+    </ConstraintSet>
+    <Transition>
+        <OnSwipe
+            motion:dragDirection="dragRight"
+            motion:touchAnchorId="@id/sign_up"
+            motion:touchAnchorSide="right"/>
+    </Transition>
+
+
+    <ConstraintSet android:id="@+id/b">
+        <Constraint android:id="@id/login">
+            <motion:Layout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </Constraint>
+        <Constraint android:id="@id/sign_up">
+            <motion:Layout
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+        </Constraint>
+    </ConstraintSet>
+
 </MotionScene>
+

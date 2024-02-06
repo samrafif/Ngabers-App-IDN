@@ -5,4 +5,7 @@
     <color name="onboard_text">#6D4D1F</color>
     <color name="dot_selected">#FF7A00</color>
     <color name="dot_not_selected">#858585</color>
+    <color name="colorPrimary">#E8941F</color>
+    <color name="colorPrimaryDark">#E8941F</color>
+    <color name="colorAccent">#D9D9D9</color>
 </resources>

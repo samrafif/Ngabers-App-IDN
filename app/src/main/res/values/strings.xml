@@ -1,5 +1,19 @@
-<resources>
-    <string name="app_name">Ngaber</string>
-    <string name="string_logon_email_screenreader">Enter email</string>
-    <string name="string_logon_passwd_screenreader">Enter password</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">Ngabers</string>
+    <string name="string_logon_email_screenreader" translatable="false">Enter email</string>
+    <string name="string_logon_passwd_screenreader" translatable="false">Enter password</string>
+    <string name="onboard_1" translatable="false">WELCOME TO NGABERS</string>
+    <string name="home" translatable="true" tools:ignore="MissingTranslation">home</string>
+    <string name="chat" translatable="true" tools:ignore="MissingTranslation">chat</string>
+    <string name="activity" translatable="true" tools:ignore="MissingTranslation">activity</string>
+    <string name="account" translatable="true" tools:ignore="MissingTranslation">account</string>
+    <string name="onboard_2" translatable="true" tools:ignore="MissingTranslation">EASY BOOKING</string>
+    <string name="onboard_3" translatable="true" tools:ignore="MissingTranslation">TRUSTED DRIVERS</string>
+    <string name="onboard_4" translatable="true" tools:ignore="MissingTranslation">GET GOING WITH US</string>
+    <string name="onboard_1_desc" translatable="true" tools:ignore="MissingTranslation">Your reliable partner for quick and convenient rides around town.</string>
+    <string name="onboard_2_desc" translatable="true" tools:ignore="MissingTranslation">Easily book a ride with just a few taps. No more waiting on the street.</string>
+    <string name="onboard_3_desc" translatable="true" tools:ignore="MissingTranslation">Our drivers are professional, experienced, and thoroughly vetted for your safety and comfort.</string>
+    <string name="onboard_4_desc" translatable="true" tools:ignore="MissingTranslation">Use Ngaber to go around the town from anywhere, at anytime</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>

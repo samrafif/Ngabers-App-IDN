@@ -5,64 +5,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUpMenu">
-
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="340dp"
-        android:layout_height="52dp"
-        android:ems="10"
-        android:hint="@string/string_logon_passwd_screenreader"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintVertical_bias="0.045" />
-
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="341dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="192dp"
-        android:ems="10"
-        android:hint="@string/string_logon_email_screenreader"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/signin_toolbar"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="360dp"
+        android:layout_height="500dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Sign Up" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="343dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="52dp"
-        android:text="Sign Up"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.573"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
-
-    <TextView
-        android:id="@+id/tv_signin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:text="Already have an account? Log In"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:cardCornerRadius="30dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/editTextTextPassword"
+                android:layout_width="340dp"
+                android:layout_height="52dp"
+                android:ems="10"
+                android:layout_marginTop="40dp"
+                android:hint="@string/string_logon_passwd_screenreader"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_et_container" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/header_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="23dp"
+                android:text="Sign-Up"
+                android:textAlignment="center"
+                android:fontFamily="@font/inter_bold"
+                android:textSize="30sp"/>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/email_et_container"
+                android:layout_marginTop="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_sign_up"
+                android:background="@drawable/rounded_orange"
+                android:layout_width="341dp"
+                android:layout_height="49dp">
+                <EditText
+                    android:id="@+id/editTextTextEmailAddress"
+                    android:layout_width="341dp"
+                    android:layout_height="49dp"
+                    android:ems="10"
+
+                    android:hint="@string/string_logon_email_screenreader"
+                    android:inputType="textEmailAddress"/>
+            </androidx.cardview.widget.CardView>
+
+
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="343dp"
+                android:layout_height="61dp"
+                android:layout_marginTop="52dp"
+                android:text="Sign Up"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.573"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+            <TextView
+                android:id="@+id/tv_signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:text="Already have an account? swipe back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
