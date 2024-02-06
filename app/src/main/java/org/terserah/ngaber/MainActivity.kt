@@ -11,14 +11,16 @@ import android.widget.ImageView
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
-        val fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val fadein = AnimationUtils.loadAnimation(this, R.anim.fade_in)
         with(findViewById<ImageView>(R.id.logo)){
             alpha = 0f
             startAnimation(fadein)
         }
+
         auth = Firebase.auth
-        super.onCreate(savedInstanceState)
         val currentUser = auth.currentUser
         if (currentUser == null) {
             println("Not Logged in")

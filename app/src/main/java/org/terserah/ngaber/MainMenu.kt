@@ -21,7 +21,7 @@ class MainMenu : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener() {
             when (it.itemId) {
                 R.id.home -> startActivity(Intent(this, MainMenu::class.java))
-                R.id.chat -> startActivity(Intent(this, Inbox::class.java))
+                R.id.chat -> println("lol")
                 R.id.activity -> startActivity(Intent(this, MainMenu::class.java))
                 R.id.account -> startActivity(Intent(this, Acccount_Detail::class.java))
 

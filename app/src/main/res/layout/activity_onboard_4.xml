@@ -32,80 +32,80 @@
         android:fadingEdgeLength="10dp"
         app:cardCornerRadius="30dp">
 
-        <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/login"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutDescription="@xml/activity_onboard_4_xml_login_scene">
+<!--        <androidx.constraintlayout.motion.widget.MotionLayout-->
+<!--            android:id="@+id/login"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layoutDescription="@xml/activity_onboard_4_xml_login_scene">-->
 
-            <EditText
-                android:id="@+id/editTextTextPasswordLogin"
-                android:layout_width="340dp"
-                android:layout_height="52dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/et_back"
-                android:ems="10"
-                android:hint="@string/string_logon_passwd_screenreader"
-                android:inputType="textPassword"
-                android:textColorHint="#F6D3A3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddressLogin" />
+<!--            <EditText-->
+<!--                android:id="@+id/editTextTextPasswordLogin"-->
+<!--                android:layout_width="340dp"-->
+<!--                android:layout_height="52dp"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:background="@drawable/et_back"-->
+<!--                android:ems="10"-->
+<!--                android:hint="@string/string_logon_passwd_screenreader"-->
+<!--                android:inputType="textPassword"-->
+<!--                android:textColorHint="#F6D3A3"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddressLogin" />-->
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/header_login"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/inter_bold"
-                android:text="Login"
-                android:textAlignment="center"
-                android:textColor="#F6D3A3"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                android:id="@+id/header_login"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:fontFamily="@font/inter_bold"-->
+<!--                android:text="Login"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="#F6D3A3"-->
+<!--                android:textSize="30sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-            <EditText
-                android:id="@+id/editTextTextEmailAddressLogin"
-                android:layout_width="341dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/et_back"
-                android:ems="10"
-                android:hint="@string/string_logon_email_screenreader"
-                android:inputType="textEmailAddress"
-                android:textColorHint="#F6D3A3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/header_login" />
+<!--            <EditText-->
+<!--                android:id="@+id/editTextTextEmailAddressLogin"-->
+<!--                android:layout_width="341dp"-->
+<!--                android:layout_height="49dp"-->
+<!--                android:layout_marginTop="40dp"-->
+<!--                android:background="@drawable/et_back"-->
+<!--                android:ems="10"-->
+<!--                android:hint="@string/string_logon_email_screenreader"-->
+<!--                android:inputType="textEmailAddress"-->
+<!--                android:textColorHint="#F6D3A3"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/header_login" />-->
 
-            <Button
-                android:id="@+id/buttonLogin"
-                android:layout_width="343dp"
-                android:layout_height="61dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/rounded_white"
-                android:fontFamily="@font/inter_semibold"
-                android:text="Sign Up"
-                android:textColor="#EBA036"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPasswordLogin" />
+<!--            <Button-->
+<!--                android:id="@+id/buttonLogin"-->
+<!--                android:layout_width="343dp"-->
+<!--                android:layout_height="61dp"-->
+<!--                android:layout_marginTop="40dp"-->
+<!--                android:background="@drawable/rounded_white"-->
+<!--                android:fontFamily="@font/inter_semibold"-->
+<!--                android:text="Sign Up"-->
+<!--                android:textColor="#EBA036"-->
+<!--                android:textSize="20sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/editTextTextPasswordLogin" />-->
 
-            <TextView
-                android:id="@+id/tv_signin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
-                android:text="swipe for sign up >>>"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
-            "
-        </androidx.constraintlayout.motion.widget.MotionLayout>
+<!--            <TextView-->
+<!--                android:id="@+id/tv_signin"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="17dp"-->
+<!--                android:text="swipe for sign up >>>"-->
+<!--                android:textColor="@color/white"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />-->
+<!--            "-->
+<!--        </androidx.constraintlayout.motion.widget.MotionLayout>-->
 
         <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/sign_up"
@@ -180,9 +180,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buttonSignup" />
-        </androidx.constraintlayout.motion.widget.MotionLayout>"
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
-    </androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_subheader"

@@ -11,9 +11,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.gms.tasks.Task
+import com.google.firebase.Firebase
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import org.terserah.ngaber.databinding.ActivityOnboardingBinding
 import org.terserah.ngaber.firebase_ops.Auth
 
@@ -55,17 +58,25 @@ class Onboarding : AppCompatActivity() {
     private lateinit var auth_ops: Auth
     private lateinit var viewPager: ViewPager
     private lateinit var adapter: OnboardingAdapter
-    private lateinit var binding: ActivityOnboardingBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_onboarding)
 
-        if (viewPager.currentItem < 0){
-            binding.backBtn.visibility = View.INVISIBLE
+        auth = Firebase.auth
+        auth_ops = Auth()
+
+        viewPager = findViewById(R.id.slideViewPager)
+        val backBtn: Button = findViewById(R.id.back_btn)
+        val nextBtn: Button = findViewById(R.id.next_btn)
+
+        println("IM FUCKING HERE MAN ${viewPager.currentItem}")
+
+        if (viewPager.currentItem == 0){
+            println("haha iran")
+            backBtn.visibility = View.INVISIBLE
         }
         if (viewPager.currentItem == 4){
-            binding.nextBtn.text = "Get started"
+            nextBtn.text = "Get started"
         }
 
         val layouts = intArrayOf(
@@ -75,53 +86,65 @@ class Onboarding : AppCompatActivity() {
             R.layout.activity_onboard_4
         )
 
-        viewPager = findViewById(R.id.slideViewPager)
         adapter = OnboardingAdapter(this, layouts)
         viewPager.adapter = adapter
 
-        val btnNext = findViewById<Button>(R.id.next_btn)
-        btnNext.setOnClickListener {
-            val current = viewPager.currentItem + 1
-            if (current < layouts.size) {
-                viewPager.currentItem = current
-            } else {
-                startActivity(Intent(this, MainMenu::class.java))
-                finish()
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
-            }
-        }
-        val btnBack = findViewById<Button>(R.id.back_btn)
-        btnBack.setOnClickListener{
-            val current = viewPager.currentItem - 1
-        }
-        while (viewPager.currentItem == 4){
-            val buttonSignup: Button = findViewById(R.id.buttonSignup)
-            val signInText: TextView = findViewById(R.id.tv_signin)
-            val emailInputSignup: EditText = findViewById(R.id.editTextTextEmailAddressSignup)
-            val passwdInputSignup: EditText = findViewById(R.id.editTextTextPasswordSignup)
-
-            val buttonLogin: Button = findViewById(R.id.buttonLogin)
-            val emailInputLogin: EditText = findViewById(R.id.editTextTextEmailAddressLogin)
-            val passwdInputLogin: EditText = findViewById(R.id.editTextTextPasswordLogin)
-            val emailTextLogin = emailInputLogin.text.toString()
-            val passwdTextLogin = passwdInputLogin.text.toString()
-
-
-            buttonSignup.setOnClickListener {
-                auth_ops.createAccount(auth, emailInputSignup.text.toString(), passwdInputSignup.text.toString())
-                    .addOnCompleteListener(this) { task -> this.onSignupComplete(task)}
+            override fun onPageScrollStateChanged(state: Int) {
             }
 
-            signInText.setOnClickListener {
-                startActivity(Intent(this, LoginMenu::class.java))
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
             }
-            buttonLogin.setOnClickListener {
-                if (auth_ops.validateInput(baseContext, emailTextLogin, passwdTextLogin)) {
-                    auth_ops.logInAccount(auth, emailTextLogin, passwdTextLogin)
-                        .addOnCompleteListener(this) { task -> this.onLoginComplete(task)}
+
+            override fun onPageSelected(position: Int) {
+                println(position)
+                if (position == 3) {
+                    setupLoginSignup()
                 }
             }
+
+        })
+
+
+//        nextBtn.setOnClickListener {
+//            val current = viewPager.currentItem + 1
+//            println(current)
+//            if (current < layouts.size) {
+//                viewPager.currentItem = current
+//            } else {
+//                setupLoginSignup()
+//                finish()
+//            }
+//        }
+//
+//        backBtn.setOnClickListener{
+//                viewPager.currentItem = viewPager.currentItem - 1
+//            }
         }
 
+    private fun setupLoginSignup() {
+        println("NO SIMPING FOR A CHILD")
+        val buttonSignup: Button = findViewById(R.id.buttonSignup)
+        val loginText: TextView = findViewById(R.id.tv_login)
+        val emailInputSignup: EditText = findViewById(R.id.editTextTextEmailAddressSignup)
+        val passwdInputSignup: EditText = findViewById(R.id.editTextTextPasswordSignup)
+
+//            val buttonLogin: Button = findViewById(R.id.buttonLogin)
+//            val emailInputLogin: EditText = findViewById(R.id.editTextTextEmailAddressLogin)
+//            val passwdInputLogin: EditText = findViewById(R.id.editTextTextPasswordLogin)
+//            val emailTextLogin = emailInputLogin.text.toString()
+//            val passwdTextLogin = passwdInputLogin.text.toString()
+
+
+        buttonSignup.setOnClickListener {
+            auth_ops.createAccount(auth, emailInputSignup.text.toString(), passwdInputSignup.text.toString())
+                .addOnCompleteListener(this) { task -> onSignupComplete(task)} // WOW! Makasih kur kur!
+        }
+
+        loginText.setOnClickListener {
+            startActivity(Intent(this, LoginMenu::class.java))
+        }
         }
     }

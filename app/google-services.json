@@ -9,10 +9,15 @@
       "client_info": {
         "mobilesdk_app_id": "1:1053429153405:android:c826de418f3e9630a07b14",
         "android_client_info": {
-          "package_name": "org.terserah.ngaber"
+          "package_name": "id.my.terserah.ngabers"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1053429153405-3bgb3nn7vu8lib57jk56g3mnetimhes2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCPFYktdvPjIhdVAyWueZ8aiVdJdtzebkA"
@@ -20,7 +25,41 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053429153405-3bgb3nn7vu8lib57jk56g3mnetimhes2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053429153405:android:53fb2b950dcc4c14a07b14",
+        "android_client_info": {
+          "package_name": "org.terserah.ngaber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053429153405-3bgb3nn7vu8lib57jk56g3mnetimhes2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPFYktdvPjIhdVAyWueZ8aiVdJdtzebkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053429153405-3bgb3nn7vu8lib57jk56g3mnetimhes2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
