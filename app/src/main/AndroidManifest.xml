@@ -17,10 +17,15 @@
         android:theme="@style/Theme.Ngaber"
         tools:targetApi="31">
         <activity
-            android:name=".Inbox"
-            android:exported="false" />
+            android:name=".AddPlaceMenu"
+            android:exported="false"
+            android:label="@string/title_activity_add_place_menu"
+            android:theme="@style/Theme.Ngaber" />
         <activity
             android:name=".ChatMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Inbox"
             android:exported="false" />
         <activity
             android:name=".LoginMenu"
@@ -29,7 +34,7 @@
             android:name=".SignUpMenu"
             android:exported="false" />
         <activity
-            android:name=".MainMenu"
+            android:name=".main_menu.MainMenu"
             android:exported="false" />
         <activity
             android:name=".Onboarding"

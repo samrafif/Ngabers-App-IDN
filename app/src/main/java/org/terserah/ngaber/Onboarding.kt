@@ -1,7 +1,6 @@
 package org.terserah.ngaber
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,14 +10,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.google.android.gms.tasks.Task
 import com.google.firebase.Firebase
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import org.terserah.ngaber.databinding.ActivityOnboardingBinding
 import org.terserah.ngaber.firebase_ops.Auth
+import org.terserah.ngaber.main_menu.MainMenu
 
 class Onboarding : AppCompatActivity() {
     private fun onSignupComplete(task: Task<AuthResult>) {

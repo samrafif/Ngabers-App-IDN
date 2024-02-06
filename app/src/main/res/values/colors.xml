@@ -7,5 +7,6 @@
     <color name="dot_not_selected">#858585</color>
     <color name="colorPrimary">#E8941F</color>
     <color name="colorPrimaryDark">#E8941F</color>
+    <color name="colorPrimaryLight">#FFE6C2</color>
     <color name="colorAccent">#D9D9D9</color>
 </resources>
