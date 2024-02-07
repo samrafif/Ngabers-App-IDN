@@ -51,7 +51,7 @@
         <Constraint android:id="@id/login">
             <motion:Layout
                 android:layout_width="0dp"
-                android:layout_height="0dp" />
+                android:layout_height="match_parent" />
         </Constraint>
         <Constraint android:id="@id/sign_up">
             <motion:Layout
@@ -76,7 +76,7 @@
         <Constraint android:id="@id/sign_up">
             <motion:Layout
                 android:layout_width="0dp"
-                android:layout_height="0dp" />
+                android:layout_height="match_parent" />
         </Constraint>
     </ConstraintSet>
 
