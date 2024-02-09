@@ -9,8 +9,7 @@
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:text="TRUSTED DRIVERS"
-        android:textColor="#FAEAD5
-"
+        android:textColor="#FAEAD5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="40dp"

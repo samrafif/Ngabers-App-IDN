@@ -6,45 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".Onboarding">
 
-    <Button
-        android:id="@+id/skipButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:background="@drawable/rounded_orange"
-        android:fontFamily="@font/inter_light_beta"
-        android:text="Skip"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/next_btn" />
+<!--    <Button-->
+<!--        android:id="@+id/skipButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="56dp"-->
+<!--        android:background="@drawable/rounded_orange"-->
+<!--        android:fontFamily="@font/inter_light_beta"-->
+<!--        android:text="Skip"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/next_btn" />-->
 
-    <Button
-        android:id="@+id/back_btn"
-        android:layout_width="143dp"
-        android:layout_height="125dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/btn_background"
-        android:fontFamily="@font/inter_light_beta"
-        android:padding="-20dp"
-        android:text="Back"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/skipButton"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/back_btn"-->
+<!--        android:layout_width="143dp"-->
+<!--        android:layout_height="125dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:background="@drawable/btn_background"-->
+<!--        android:fontFamily="@font/inter_light_beta"-->
+<!--        android:padding="-20dp"-->
+<!--        android:text="Back"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/skipButton"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
-    <Button
-        android:id="@+id/next_btn"
-        android:layout_width="169dp"
-        android:layout_height="130dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/btn_background"
-        android:fontFamily="@font/inter_light_beta"
-        android:padding="-20dp"
-        android:text="Next"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/next_btn"-->
+<!--        android:layout_width="169dp"-->
+<!--        android:layout_height="130dp"-->
+<!--        android:layout_marginEnd="4dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:background="@drawable/btn_background"-->
+<!--        android:fontFamily="@font/inter_light_beta"-->
+<!--        android:padding="-20dp"-->
+<!--        android:text="Next"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/slideViewPager"
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@id/skipButton"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

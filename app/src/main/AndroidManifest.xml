@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +18,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ngaber"
         tools:targetApi="31">
+<!--        <meta-data-->
+<!--            android:name="com.google.android.geo.API_KEY"-->
+<!--            android:value="${MAPS_API_KEY}" />-->
+        <activity
+            android:name=".AccountDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PlacesListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LocationAddMenu"
+            android:exported="false" />
         <activity
             android:name=".AddPlaceMenu"
             android:exported="false"
