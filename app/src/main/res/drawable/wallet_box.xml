@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <layer id="120:51" name="rectangle_83" type="shape" shapeType="round rectangle" color="0xF4A73A" radius="4" x="18" y="198" width="361" height="114">
+        <constraints>
+            <horizontal>MIN</horizontal>
+            <vertical>MIN</vertical>
+        </constraints>
+
+    </layer>
+
+</selector>

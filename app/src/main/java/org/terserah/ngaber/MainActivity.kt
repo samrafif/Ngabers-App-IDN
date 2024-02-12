@@ -8,7 +8,6 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import android.widget.ImageView
-import org.terserah.ngaber.main_menu.MainMenu
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth

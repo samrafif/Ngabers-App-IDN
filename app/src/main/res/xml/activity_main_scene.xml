@@ -4,39 +4,6 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        motion:constraintSetEnd="@+id/end"
-        motion:constraintSetStart="@id/start"
-        motion:duration="1000">
-       <KeyFrameSet>
-           <KeyAttribute
-               motion:motionTarget="@+id/logo"
-               motion:framePosition="100"
-               android:alpha="100" />
-       </KeyFrameSet>
-    </Transition>
-
-    <ConstraintSet android:id="@+id/start">
-        <Constraint
-            android:id="@+id/logo"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="1px"
-            android:layout_height="1px"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent" />
-    </ConstraintSet>
-
-    <ConstraintSet android:id="@+id/end">
-        <Constraint
-            android:id="@+id/logo"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="100px"
-            android:layout_height="100px"
-            motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent" />
-    </ConstraintSet>
-    <Transition
         motion:constraintSetEnd="@id/a"
         motion:constraintSetStart="@id/b"
         motion:duration="300">
@@ -44,9 +11,9 @@
         <OnSwipe
             motion:dragDirection="dragLeft"
             motion:touchAnchorId="@id/login"
-            motion:touchAnchorSide="left" />
-    </Transition>
+            motion:touchAnchorSide="left"/>
 
+    </Transition>
     <ConstraintSet android:id="@+id/a">
         <Constraint android:id="@id/login">
             <motion:Layout
@@ -59,13 +26,14 @@
                 android:layout_height="match_parent" />
         </Constraint>
     </ConstraintSet>
+
     <Transition>
         <OnSwipe
             motion:dragDirection="dragRight"
             motion:touchAnchorId="@id/sign_up"
             motion:touchAnchorSide="right"/>
-    </Transition>
 
+    </Transition>
 
     <ConstraintSet android:id="@+id/b">
         <Constraint android:id="@id/login">
@@ -79,6 +47,7 @@
                 android:layout_height="match_parent" />
         </Constraint>
     </ConstraintSet>
+
 
 </MotionScene>
 
