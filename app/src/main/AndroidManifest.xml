@@ -31,6 +31,9 @@
             android:name=".LocationAddMenu"
             android:exported="false" />
         <activity
+            android:name=".Map_View"
+            android:exported="false" />
+        <activity
             android:name=".Location_Search"
             android:exported="false" />
         <activity
