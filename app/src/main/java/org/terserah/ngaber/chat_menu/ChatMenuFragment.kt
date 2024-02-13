@@ -1,10 +1,15 @@
-package org.terserah.ngaber
+package org.terserah.ngaber.chat_menu
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
+import com.google.firebase.firestore.firestore
+import org.terserah.ngaber.R
 
 //// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 //private const val ARG_PARAM1 = "param1"
@@ -36,6 +41,38 @@ class ChatMenuFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chat_menu, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val db = Firebase.firestore
+        val currentUser = Firebase.auth.currentUser
+
+        println(currentUser?.uid)
+
+        db.collection("chats")
+            .whereEqualTo("customer_uid", currentUser?.uid)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty) {
+                    val chatData = hashMapOf(
+                        "customer_uid" to currentUser?.uid,
+                        "driver_uid" to "anon",
+                        "customer_name" to currentUser?.email,
+                        "driver_name" to "Anon",
+                    )
+                    db.collection("chats").document("K2ib4H77rj0LYewF7dP").set(chatData)
+                }
+
+                for (document in documents) {
+                    Log.d("TAG", "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w("TAG", "Error getting documents: ", exception)
+            }
+
     }
 
     companion object {

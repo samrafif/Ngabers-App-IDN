@@ -1,26 +1,20 @@
 package org.terserah.ngaber
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.webkit.MimeTypeMap
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.storage
-import org.jetbrains.annotations.Nullable
-import java.io.File
-import java.io.FileInputStream
+import org.terserah.ngaber.main_menu.MainMenu
+
 
 class AccountDetailsActivity : AppCompatActivity() {
 
@@ -62,6 +56,13 @@ class AccountDetailsActivity : AppCompatActivity() {
             )
 
             users.document(currentUser.uid).set(data)
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setDisplayName(etName.text.toString()).build()
+
+            currentUser.updateProfile(profileUpdates)
+
+            startActivity(Intent(this, MainMenu::class.java))
+
         }
 
     }

@@ -1,14 +1,34 @@
 package org.terserah.ngaber.main_menu
 
+import android.content.Intent
+import android.content.res.AssetManager
 import android.content.res.Resources
+import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
 import android.widget.ImageButton
+import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainerView
+import androidx.fragment.app.findFragment
+import com.google.android.gms.common.api.Status
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
+import org.terserah.ngaber.LocationAddMenu
+import org.terserah.ngaber.PickUpDropOffPickerActivity
 import org.terserah.ngaber.R
 
 
@@ -19,7 +39,9 @@ import org.terserah.ngaber.R
  */
 class MainMenuFragment : Fragment() {
 
-    lateinit var viewOfFrag: View
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firestore: FirebaseFirestore
+    private lateinit var currentUser: FirebaseUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,19 +58,65 @@ class MainMenuFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btn: ImageButton = view.findViewById(R.id.ib_add_place)
+        auth = Firebase.auth
+        firestore = Firebase.firestore
+        currentUser = auth.currentUser!!
 
-        btn.setOnClickListener {
-            setMargins(btn, convertToPixels(334f), convertToPixels(64f), 0, 0)
-        }
+        val tvWelcome: TextView = view.findViewById(R.id.tv_welcome)
+
+        // Initialize the AutocompleteSupportFragment.
+        val autocompleteFragment =
+            childFragmentManager.findFragmentById(R.id.autocomplete_fragment)
+                    as AutocompleteSupportFragment
+
+        val userDataRef = firestore.collection("users").document(currentUser.uid)
+        val TAG = "LOG"
+
+        userDataRef.get().addOnSuccessListener { document ->
+            if (document != null) {
+                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                val docData = document.data
+                val welcomeText = "Welcome ${currentUser.displayName}, today you're a ${docData?.get("user_role")}"
+                tvWelcome.text = welcomeText
+
+            } else {
+                Log.d(TAG, "No such document")
+            }
+        }.addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+
+        // Specify the types of place data to return.
+        autocompleteFragment.setPlaceFields(listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.ADDRESS))
+
+        // Set up a PlaceSelectionListener to handle the response.
+        autocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(place: Place) {
+                // TODO: Get info about the selected place.
+                Log.i("BRO", "Place: ${place.name}, ${place.id}, ${place.latLng}, ${place.address}")
+                val intent = Intent(activity, PickUpDropOffPickerActivity::class.java)
+                intent.putExtra("place_info", place)
+                startActivity(intent)
+            }
+
+            override fun onError(status: Status) {
+                // TODO: Handle the error.
+                Log.i("BRO", "An error occurred: $status")
+            }
+        })
+
     }
 
-    fun convertToPixels(dp: Float): Int {
-        val r: Resources = this.getResources()
+    private fun getPlaces() {
+        
+    }
+
+    private fun convertToPixels(dp: Float): Int {
+        val r: Resources = this.resources
         val px = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
             dp,
-            r.getDisplayMetrics()
+            r.displayMetrics
         ).toInt()
 
         return px

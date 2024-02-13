@@ -15,6 +15,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import org.terserah.ngaber.OnboardingAdapter
 import org.terserah.ngaber.firebase_ops.Auth
 import org.terserah.ngaber.main_menu.MainMenu
 
@@ -24,7 +25,7 @@ class Onboarding : AppCompatActivity() {
             // Sign in success, update UI with the signed-in user's information
             Log.d("VERBOSE", "createUserWithEmail:success")
 
-            startActivity(Intent(this, MainMenu::class.java))
+            startActivity(Intent(this, AccountDetailsActivity::class.java))
         } else {
             // If sign in fails, display a message to the user.
             Log.w("VERBOSE", "createUserWithEmail:failure", task.exception)
@@ -64,18 +65,6 @@ class Onboarding : AppCompatActivity() {
         auth_ops = Auth()
 
         viewPager = findViewById(R.id.slideViewPager)
-        val backBtn: Button = findViewById(R.id.back_btn)
-        val nextBtn: Button = findViewById(R.id.next_btn)
-
-        println("IM FUCKING HERE MAN ${viewPager.currentItem}")
-
-        if (viewPager.currentItem == 0){
-            println("haha iran")
-            backBtn.visibility = View.INVISIBLE
-        }
-        if (viewPager.currentItem == 4){
-            nextBtn.text = "Get started"
-        }
 
         val layouts = intArrayOf(
             R.layout.activity_onboard_1,
