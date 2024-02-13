@@ -69,6 +69,10 @@ dependencies {
 //    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0 "))
     implementation("com.google.android.libraries.places:places:3.3.0")
     implementation("com.mapbox.maps:android:11.1.0")
+    implementation("com.github.kittinunf.fuel:fuel:3.0.0-alpha1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
+//    implementation("com.google.android.libraries.navigation:navigation:5.2.1")
 //    implementation("com.mapbox.navigation:android:2.10.1")
 //    implementation("com.mapbox.navigation:ui-dropin:2.10.1")
 }
