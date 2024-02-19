@@ -14,7 +14,6 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import org.terserah.ngaber.firebase_ops.Auth
-import org.terserah.ngaber.main_menu.MainMenu
 
 class SignUpMenu : AppCompatActivity() {
 

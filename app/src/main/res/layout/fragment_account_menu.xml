@@ -30,7 +30,7 @@
                 android:id="@+id/role"
                 android:layout_width="240dp"
                 android:layout_height="40dp"
-                android:text="Customer"
+                android:text="driver"
                 android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="20dp"
@@ -51,69 +51,190 @@
                     android:src="@drawable/profile"/>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="349dp"
-            android:layout_height="555dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="350dp"
+            android:layout_height="500dp"
+            app:layout_constraintTop_toBottomOf="@id/profile_1_placeholder"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile_1_placeholder">
-
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp">
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/btn_signout"
-                android:layout_width="347dp"
-                android:layout_height="79dp"
-                android:layout_marginStart="1dp"
-                android:layout_marginEnd="1dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="92dp"
-                    android:layout_marginBottom="24dp"
-                    android:fontFamily="@font/inter_bold"
-                    android:text="Sign Out"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView12"
-                    android:layout_width="63dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginBottom="10dp"
-                    android:src="@drawable/rounded_orange"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="56dp"
-                    android:layout_height="52dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="14dp"
-                    android:src="@drawable/menu_account"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView11"
-                    android:layout_width="39dp"
+                android:id="@+id/payment"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                app:layout_constraintTop_toTopOf="parent">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="20dp"
-                    android:src="@drawable/baseline_keyboard_arrow_right_24"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:cardCornerRadius="100dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FAEFD9">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:src="@drawable/baseline_credit_card_24"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:text="Payment"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#A3A3A3"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/information"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/payment">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:cardCornerRadius="100dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FAEFD9">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:src="@drawable/baseline_info_24"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:text="Information"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#A3A3A3"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/security"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/information">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:cardCornerRadius="100dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FAEFD9">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:src="@drawable/baseline_security_24"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:text="Security"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#A3A3A3"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/discount"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/security">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:cardCornerRadius="100dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FAEFD9">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:src="@drawable/baseline_percent_24"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:text="Discount Notification"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#A3A3A3"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

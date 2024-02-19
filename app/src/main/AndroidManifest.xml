@@ -19,7 +19,7 @@
         android:theme="@style/Theme.Ngaber"
         tools:targetApi="31">
         <activity
-            android:name=".PickUpDropOffPickerActivity"
+            android:name=".ActivityOrderDetail"
             android:exported="false" />
         <!-- <meta-data -->
         <!-- android:name="com.google.android.geo.API_KEY" -->
@@ -32,6 +32,15 @@
             android:exported="false" />
         <activity
             android:name=".LocationAddMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Map_View"
+            android:exported="false" />
+        <activity
+            android:name=".Location_Search"
+            android:exported="false" />
+        <activity
+            android:name=".main_menu.WalletActivity"
             android:exported="false" />
         <activity
             android:name=".AddPlaceMenu"
