@@ -19,9 +19,14 @@
         android:theme="@style/Theme.Ngaber"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityOrderDetail"
+            android:name=".PersonalInformation"
             android:exported="false" />
-        <!-- <meta-data -->
+        <activity
+            android:name=".ActivitySecurity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityOrderDetail"
+            android:exported="false" /> <!-- <meta-data -->
         <!-- android:name="com.google.android.geo.API_KEY" -->
         <!-- android:value="${MAPS_API_KEY}" /> -->
         <activity
