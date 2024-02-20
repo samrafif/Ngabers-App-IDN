@@ -11,7 +11,14 @@ import com.google.firebase.auth.auth
 import android.widget.ImageView
 import org.terserah.ngaber.BuildConfig
 import com.google.android.libraries.places.api.Places
+import com.google.gson.Gson
+import kotlinx.serialization.encodeToString
 import org.terserah.ngaber.main_menu.MainMenu
+import kotlinx.serialization.json.Json
+import org.terserah.ngaber.model.LatLng
+import org.terserah.ngaber.model.Location
+import org.terserah.ngaber.model.RouteModifiers
+import org.terserah.ngaber.model.RouteRequestModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth

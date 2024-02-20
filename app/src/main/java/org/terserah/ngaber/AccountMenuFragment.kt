@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
+import org.terserah.ngaber.main_menu.WalletActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +59,8 @@ class AccountMenuFragment : Fragment() {
 
 //        auth.signOut()
 
-        val btnSignOut: ConstraintLayout = view.findViewById(R.id.btn_signout)
+//        val btnSignOut: ConstraintLayout = view.findViewById(R.id.btn_signout)
+        val btnPayment: ConstraintLayout = view.findViewById(R.id.payment)
         val tvUserName: TextView = view.findViewById(R.id.username)
         val tvRole: TextView = view.findViewById(R.id.role)
 
@@ -82,11 +84,14 @@ class AccountMenuFragment : Fragment() {
 
         tvUserName.text = auth.currentUser?.displayName
 
-
-        btnSignOut.setOnClickListener {
-            auth.signOut()
-            startActivity(Intent(activity, MainActivity::class.java))
+        btnPayment.setOnClickListener {
+            startActivity(Intent(activity, WalletActivity::class.java))
         }
+
+//        btnSignOut.setOnClickListener {
+//            auth.signOut()
+//            startActivity(Intent(activity, MainActivity::class.java))
+//        }
     }
 
     companion object {

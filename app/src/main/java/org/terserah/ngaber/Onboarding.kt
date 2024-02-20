@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import org.terserah.ngaber.OnboardingAdapter
 import org.terserah.ngaber.firebase_ops.Auth
+import org.terserah.ngaber.main_menu.MainMenu
 
 class Onboarding : AppCompatActivity() {
     private fun onSignupComplete(task: Task<AuthResult>) {
@@ -28,6 +29,7 @@ class Onboarding : AppCompatActivity() {
         } else {
             // If sign in fails, display a message to the user.
             Log.w("VERBOSE", "createUserWithEmail:failure", task.exception)
+            task.exception
             Toast.makeText(
                 baseContext,
                 "Authentication failed.",

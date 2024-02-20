@@ -38,6 +38,8 @@ class AccountDetailsActivity : AppCompatActivity() {
 
         val etName: EditText = findViewById(R.id.et_name)
         val etDob: EditText = findViewById(R.id.et_bday)
+        val etPlateNum: EditText = findViewById(R.id.et_name2)
+        val etVehicleName: EditText = findViewById(R.id.et_name3)
 //        val ivPfp: ImageView = findViewById(R.id.iv_pfp)
 
 //        ivPfp.setOnClickListener {
@@ -52,6 +54,10 @@ class AccountDetailsActivity : AppCompatActivity() {
             val data = hashMapOf(
                 "user_date_of_birth" to etDob.text.toString(),
                 "user_name" to etName.text.toString(),
+                "user_plate_number" to etPlateNum.text.toString(),
+                "user_vehicle" to etVehicleName.text.toString(),
+                "user_rating" to 0.0f,
+                "balance" to 500_000,
                 "user_role" to "CUSTOMER"
             )
 

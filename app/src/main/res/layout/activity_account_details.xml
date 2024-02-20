@@ -20,13 +20,38 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/et_name2"
+        android:layout_width="317dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="420dp"
+        android:ems="10"
+        android:hint="Plate Number"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_name3"
+        android:layout_width="317dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="364dp"
+        android:ems="10"
+        android:hint="Vehicle Name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.553"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
         android:id="@+id/et_bday"
         android:layout_width="315dp"
         android:layout_height="47dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Birthday"
-        android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,10 +61,10 @@
         android:id="@+id/btn_submit"
         android:layout_width="328dp"
         android:layout_height="55dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="184dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintHorizontal_bias="0.626"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_bday" />
 
