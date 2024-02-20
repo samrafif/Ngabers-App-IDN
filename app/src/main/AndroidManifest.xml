@@ -40,8 +40,15 @@
             android:value="${PLACES_API_KEY}" />
 
         <activity
+            android:name=".PersonalInformation"
+            android:exported="false" />
+        <activity
+            android:name=".ActivitySecurity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityOrderDetail"
-            android:exported="false" /> <!-- <meta-data -->
+            android:exported="false" />
+        <!-- <meta-data -->
         <!-- android:name="com.google.android.geo.API_KEY" -->
         <!-- android:value="${MAPS_API_KEY}" /> -->
         <activity
