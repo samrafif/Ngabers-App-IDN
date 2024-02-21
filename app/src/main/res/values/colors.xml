@@ -8,5 +8,6 @@
     <color name="colorPrimary">#E8941F</color>
     <color name="colorPrimaryDark">#E8941F</color>
     <color name="colorPrimaryLight">#FFE6C2</color>
+    <color name="switchOrange">#F3A12D</color>
     <color name="colorAccent">#D9D9D9</color>
 </resources>
