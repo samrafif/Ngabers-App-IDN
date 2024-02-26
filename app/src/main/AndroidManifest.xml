@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Ngaber"
         tools:targetApi="31">
         <activity
+            android:name=".OrderOngoingDriverActivity"
+            android:exported="false" />
+        <activity
             android:name=".WalletActivity"
             android:exported="false" />
         <activity
@@ -47,8 +50,7 @@
             android:exported="false" />
         <activity
             android:name=".ActivityOrderDetail"
-            android:exported="false" />
-        <!-- <meta-data -->
+            android:exported="false" /> <!-- <meta-data -->
         <!-- android:name="com.google.android.geo.API_KEY" -->
         <!-- android:value="${MAPS_API_KEY}" /> -->
         <activity
@@ -97,7 +99,11 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

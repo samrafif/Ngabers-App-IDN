@@ -1,5 +1,6 @@
 package org.terserah.ngaber
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,8 @@ import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 import com.google.android.libraries.places.api.model.Place
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,7 +17,44 @@ import com.google.firebase.firestore.firestore
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.MapView
-import java.util.UUID
+import org.terserah.ngaber.main_menu.MainMenu
+import org.terserah.ngaber.main_menu.StartGameDialogFragment
+
+class StartGameDialogFragment(activity: ActivityOrderDetail) : DialogFragment() {
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        val TAG = "AA"
+
+        return activity?.let {
+            // Use the Builder class for convenient dialog construction.
+            val builder = AlertDialog.Builder(it)
+            builder.setMessage("DRIVER HAS ARRIVED")
+                .setPositiveButton("OK") { dialog, id ->
+                }
+            // Create the AlertDialog object and return it.
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+}
+
+class StartGameDialogFragmenta(activity: ActivityOrderDetail) : DialogFragment() {
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        val TAG = "AA"
+
+        return activity?.let {
+            // Use the Builder class for convenient dialog construction.
+            val builder = AlertDialog.Builder(it)
+            builder.setMessage("THANK YOU FOR USING NGABERS")
+                .setPositiveButton("OK") { dialog, id ->
+                }
+            // Create the AlertDialog object and return it.
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+}
 
 class ActivityOrderDetail : AppCompatActivity() {
     private lateinit var mapView: MapView
@@ -25,9 +65,7 @@ class ActivityOrderDetail : AppCompatActivity() {
 
         firestore = Firebase.firestore
         val extra1: Place = intent.getParcelableExtra("place_info")!!
-        val originLat: Double = intent.getDoubleExtra("origin_loc_lat", 0.0)
-        val originLong: Double = intent.getDoubleExtra("origin_loc_long", 0.0)
-        val distance = intent.getIntExtra("distance", 0)
+        val extraUUID: String? = intent.getStringExtra("order_id")
 
 
         mapView = findViewById(R.id.mapViewInner)
@@ -49,32 +87,18 @@ class ActivityOrderDetail : AppCompatActivity() {
         mapView.mapboxMap.setCamera(
             CameraOptions.Builder()
                 .zoom(15.0)
-                .center(Point.fromLngLat(extra1.latLng.longitude, extra1.latLng.latitude ))
+                .center(Point.fromLngLat(extra1.latLng.longitude, extra1.latLng.latitude))
                 .build()
         )
 
         tvPlaceName.text = extra1.name
 
-        val myUuid = UUID.randomUUID()
-        val myUuidAsString = myUuid.toString()
-
         val ordersRef = firestore.collection("orders")
         val usersRef = firestore.collection("users")
-        val newOrder = ordersRef.document(myUuidAsString)
-
-        val orderData = mapOf(
-            "origin" to "$originLat,$originLong",
-            "destination" to "${extra1.latLng.latitude},${extra1.latLng.longitude}",
-            "price" to "${distance * 0.01}",
-            "taken" to false,
-            "driver_location" to "$originLat,$originLong",
-            "driver" to ""
-        )
-        newOrder.set(orderData)
 
         val TAG = "TAG"
 
-        newOrder.addSnapshotListener { snapshot, e ->
+        extraUUID?.let { ordersRef.document(it) }?.addSnapshotListener { snapshot, e ->
             if (e != null) {
                 Log.w(TAG, "Listen failed.", e)
                 return@addSnapshotListener
@@ -100,19 +124,18 @@ class ActivityOrderDetail : AppCompatActivity() {
                                 Log.d(TAG, "No such document")
                             }
                         }.addOnFailureListener { exception ->
-                        Log.d(TAG, "get failed with ", exception)
-                    }
+                            Log.d(TAG, "get failed with ", exception)
+                        }
                 }
 
-                var location = snapshot.data?.get("driver_location")
-                location = location.toString().split(",")
+                if (snapshot.data!!["driver_location"] as Boolean) {
+                    StartGameDialogFragment(this@ActivityOrderDetail).show(supportFragmentManager, "GAME_DIALOG")
+                }
 
-                mapView.mapboxMap.setCamera(
-                    CameraOptions.Builder()
-                        .zoom(15.0)
-                        .center(Point.fromLngLat(location[0].toDouble(), location[1].toDouble() ))
-                        .build()
-                )
+                if (snapshot.data!!["done"] as Boolean) {
+                    StartGameDialogFragmenta(this@ActivityOrderDetail).show(supportFragmentManager, "GAME_DIALOG")
+                }
+
 
             } else {
                 Log.d(TAG, "Current data: null")

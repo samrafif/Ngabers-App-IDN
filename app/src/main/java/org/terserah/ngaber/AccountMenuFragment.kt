@@ -60,7 +60,6 @@ class AccountMenuFragment : Fragment() {
 //        auth.signOut()
 
 //        val btnSignOut: ConstraintLayout = view.findViewById(R.id.btn_signout)
-        val btnPayment: ConstraintLayout = view.findViewById(R.id.payment)
         val tvUserName: TextView = view.findViewById(R.id.username)
         val tvRole: TextView = view.findViewById(R.id.role)
 
@@ -83,9 +82,20 @@ class AccountMenuFragment : Fragment() {
         }
 
         tvUserName.text = auth.currentUser?.displayName
+        val btnPayment: ConstraintLayout = view.findViewById(R.id.payment)
+        val btnSecurity: ConstraintLayout = view.findViewById(R.id.security)
+        val btnInformation: ConstraintLayout = view.findViewById(R.id.information)
 
         btnPayment.setOnClickListener {
             startActivity(Intent(activity, WalletActivity::class.java))
+        }
+
+        btnSecurity.setOnClickListener {
+            startActivity(Intent(activity, ActivitySecurity::class.java))
+        }
+
+        btnInformation.setOnClickListener {
+            startActivity(Intent(activity, PersonalInformation::class.java))
         }
 
 //        btnSignOut.setOnClickListener {

@@ -21,10 +21,11 @@ class ActivityOrderDetailDriver : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_detail_driver)
-        val density = resources.displayMetrics.density
+
         val placeholder: ConstraintLayout = findViewById(R.id.status_placeholder)
         val switchButton: Switch = findViewById(R.id.Switch)
         val imageButton: ImageButton = findViewById(R.id.imageButton)
+
         switchButton.setOnCheckedChangeListener { buttonView, isChecked ->
             val status:TextView = findViewById(R.id.Driver_Status)
             if (isChecked) {

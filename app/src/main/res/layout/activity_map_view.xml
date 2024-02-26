@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Map_View"
     android:background="@color/black">
+
+    <com.mapbox.maps.MapView
+        android:id="@+id/mapViewInner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.mapbox.maps.MapView>
     <androidx.cardview.widget.CardView
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -271,18 +280,19 @@
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="10dp"
                         android:text="Total"/>
+
                     <TextView
                         android:id="@+id/tv_distance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="36dp"
+                        android:layout_height="6dp"
+                        android:layout_marginEnd="4dp"
+                        android:fontFamily="@font/inter_regular"
+
+                        android:text="100 km"
                         android:textColor="@color/black"
                         android:textSize="13sp"
-
-                        android:fontFamily="@font/inter_regular"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="4dp"
-                        android:text="100 km"/>
+                        app:layout_constraintTop_toTopOf="parent" />
                     <TextView
                         android:id="@+id/tv_price"
                         android:layout_width="wrap_content"
@@ -361,6 +371,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
+                    android:id="@+id/buy"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginBottom="10dp"
                     android:layout_marginHorizontal="20dp"

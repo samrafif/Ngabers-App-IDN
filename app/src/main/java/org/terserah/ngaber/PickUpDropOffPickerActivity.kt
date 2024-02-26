@@ -5,7 +5,6 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +14,6 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.res.ResourcesCompat
@@ -29,32 +27,15 @@ import com.mapbox.common.location.IntervalSettings
 import com.mapbox.common.location.LocationProviderRequest
 import com.mapbox.common.location.LocationService
 import com.mapbox.common.location.LocationServiceFactory
-import com.mapbox.geojson.Feature
-import com.mapbox.geojson.LineString
 import com.mapbox.geojson.Point
-import com.mapbox.geojson.utils.PolylineUtils
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
-import com.mapbox.maps.extension.style.layers.addLayer
-import com.mapbox.maps.extension.style.layers.generated.LineLayer
-import com.mapbox.maps.extension.style.layers.getLayer
-import com.mapbox.maps.extension.style.sources.addSource
-import com.mapbox.maps.extension.style.sources.generated.GeoJsonSource
-import com.mapbox.maps.extension.style.sources.generated.geoJsonSource
-import com.mapbox.maps.extension.style.sources.getSource
-import com.mapbox.maps.plugin.annotation.AnnotationConfig
-import com.mapbox.maps.plugin.annotation.annotations
-import com.mapbox.maps.plugin.annotation.generated.OnPolylineAnnotationClickListener
-import com.mapbox.maps.plugin.annotation.generated.PolylineAnnotationManager
-import com.mapbox.maps.plugin.annotation.generated.PolylineAnnotationOptions
-import com.mapbox.maps.plugin.annotation.generated.createPolylineAnnotationManager
 import com.mapbox.maps.plugin.gestures.OnMoveListener
 import com.mapbox.maps.plugin.gestures.gestures
 import fuel.Fuel
 import fuel.HttpResponse
 import fuel.get
-import fuel.post
 import kotlinx.coroutines.runBlocking
 import org.terserah.ngaber.model.DirectionsResponse
 import org.terserah.ngaber.model.LatLng
@@ -69,7 +50,8 @@ class PickUpDropOffPickerActivity : AppCompatActivity() {
 
     private lateinit var destLoc: Place
     private lateinit var destCoords: LatLng
-    private lateinit var startCoords: LatLng
+    private var startCoords: LatLng = LatLng(0.0,0.0)
+    private lateinit var currentLoc: LatLng
 
     private val LAYER_ID = "road-street-navigation"
     private val SOURCE_ID = "nav-lines"
@@ -169,13 +151,13 @@ class PickUpDropOffPickerActivity : AppCompatActivity() {
             destLoc.latLng.latitude,
             destLoc.latLng.longitude
         )
-        startCoords = getCurrLocation()
 
         mapView.mapboxMap.loadStyle(
             Style.STANDARD
         ) {
             initLocationComponent()
             setupGesturesListener()
+            reCenterCamera()
 
 //            getRouteAndShow()
 
@@ -184,7 +166,7 @@ class PickUpDropOffPickerActivity : AppCompatActivity() {
             pickRouteButton.setOnClickListener {
                 val route = getRouteAndShow()
                 val distance = route.routes[0].legs[0].distance.value
-                val intent = Intent(this, ActivityOrderDetail::class.java)
+                val intent = Intent(this, Map_View::class.java)
 
                 intent.putExtra("place_info", destLoc)
                 intent.putExtra("origin_loc_lat", startCoords.latitude)
@@ -198,6 +180,15 @@ class PickUpDropOffPickerActivity : AppCompatActivity() {
 
         tvPickup.text = "Your Location"
         tvDropOff.text = destLoc.address
+
+        getCurrLocation {
+            setStart(it)
+        }
+        println(startCoords)
+    }
+
+    private fun setStart(location: LatLng) {
+        startCoords = location
     }
 
     private fun setupDialog(addressOld: TextView, editText: EditText): AlertDialog.Builder {
@@ -261,38 +252,48 @@ class PickUpDropOffPickerActivity : AppCompatActivity() {
         } else {
             Log.d("ERROR","Failed to get device location provider")
         }
-
-        reCenterCamera()
     }
 
     private fun reCenterCamera() {
-        val location = getCurrLocation()
-
-        mapView.mapboxMap.setCamera(
-            CameraOptions.Builder()
-                .center(Point.fromLngLat(location.longitude, location.latitude))
-                .build()
-        )
+        getCurrLocation {
+            mapView.mapboxMap.setCamera(
+                CameraOptions.Builder()
+                    .center(Point.fromLngLat(it.longitude, it.latitude))
+                    .build()
+            )
+        }
     }
 
-    private fun getCurrLocation(): LatLng {
+    private fun getCurrLocation(lambda: (result: LatLng) -> Unit): LatLng {
+        initLocationComponent()
         var location = LatLng(
-            -6.525277,
-            107.0355607
+            0.0,
+            0.0
         )
 
         val lastLocationCancelable = locationProvider?.getLastLocation { result ->
-            result?.let {
-                println("LOCF")
+            println("LOCF")
+            println(result)
+            if (result != null) {
                 println(result.latitude)
                 println(result.longitude)
 
-                location.latitude = result.latitude
-                location.longitude = result.longitude
+                location = LatLng(
+                    result.latitude,
+                    result.longitude
+                )
+
+                println(location)
+
+                val currentLoc = LatLng(
+                    location.latitude,
+                    location.longitude
+                )
+
+                lambda(currentLoc)
             }
         }
 
-        println(location)
         return location
     }
 
@@ -318,20 +319,20 @@ class PickUpDropOffPickerActivity : AppCompatActivity() {
 //        val address = addresses?.get(0)?.getAddressLine(0)
 //
 //        println(address)
-//        val latLong = LatLng(
-//            lat,
-//            long
-//        )
+        val latLong = LatLng(
+            lat,
+            long
+        )
 //
-//        if (currSelected) {
-//            val tvPickUp: TextView = findViewById(R.id.tv_pickup_loc)
+        if (currSelected) {
+            val tvPickUp: TextView = findViewById(R.id.tv_pickup_loc)
 //            tvPickUp.text = address
-//            startCoords = latLong
-//        } else {
-//            val tvDropOff: TextView = findViewById(R.id.tv_drop_off_loc)
+            startCoords = latLong
+        } else {
+            val tvDropOff: TextView = findViewById(R.id.tv_drop_off_loc)
 //            tvDropOff.text = address
-//            destCoords = latLong
-//        }
+            destCoords = latLong
+        }
 
 //        Toast.makeText(
 //            this,

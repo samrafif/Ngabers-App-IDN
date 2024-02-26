@@ -54,27 +54,7 @@
             android:scaleType="centerCrop"
             android:clickable="true"/>
     </androidx.cardview.widget.CardView>
-    <TextView
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Capture or select your own image"
-        android:textSize="16sp"
-        android:textColor="#999999"
-        android:gravity="left"
-        android:fontFamily="@font/inter_semibold"
-        app:layout_constraintTop_toTopOf="@id/profile_picture_placeholder"
-        app:layout_constraintBottom_toBottomOf="@id/profile_picture_placeholder"
-        app:layout_constraintStart_toEndOf="@id/profile_picture_placeholder"
-        android:layout_marginStart="20dp"/>
-    <ImageButton
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintTop_toTopOf="@id/profile_picture_placeholder"
-        app:layout_constraintBottom_toBottomOf="@id/profile_picture_placeholder"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="30dp"
-        android:src="@drawable/baseline_photo_camera_24"
-        android:background="@drawable/camera_btn_background"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -129,48 +109,80 @@
                         android:background="#CED2D7"
                         app:layout_constraintTop_toBottomOf="@id/et_full_name"
                         app:layout_constraintBottom_toTopOf="@id/header_phone_numb"/>
+
                     <TextView
                         android:id="@+id/header_phone_numb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Phone Number"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="50dp"
                         android:fontFamily="@font/inter_semibold"
+                        android:text="Plate Number"
                         android:textColor="@color/black"
                         android:textSize="24sp"
-                        app:layout_constraintTop_toBottomOf="@id/et_full_name"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginStart="20dp"/>
+                        app:layout_constraintTop_toBottomOf="@id/et_full_name" />
+
+                    <TextView
+                        android:id="@+id/header_phone_numb2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="160dp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Vehicle Type"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/et_full_name" />
+
                     <EditText
                         android:id="@+id/et_phone_numb"
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginHorizontal="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/header_phone_numb"
-                        android:hint="Nomor Telepon"
-                        android:textColorHint="@color/black"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_white"
+                        android:hint="Nomer Plat"
                         android:textColor="@color/black"
-                        android:background="@drawable/rounded_white" />
+                        android:textColorHint="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/header_phone_numb" />
+
+                    <EditText
+                        android:id="@+id/et_vehicle_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/rounded_white"
+                        android:hint="Nama kendaraan"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/header_phone_numb2" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="#CED2D7"
                         app:layout_constraintTop_toBottomOf="@id/et_phone_numb"
                         app:layout_constraintBottom_toTopOf="@id/header_birth_date"/>
+
                     <TextView
                         android:id="@+id/header_birth_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date of Birth"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="28dp"
                         android:fontFamily="@font/inter_semibold"
+                        android:text="Date of Birth"
                         android:textColor="@color/black"
                         android:textSize="24sp"
-                        app:layout_constraintTop_toBottomOf="@id/et_phone_numb"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginStart="20dp"/>
+                        app:layout_constraintTop_toBottomOf="@+id/et_vehicle_type" />
+
                     <EditText
                         android:id="@+id/et_birth_date"
                         android:layout_marginTop="10dp"
@@ -249,26 +261,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginTop="50dp"
                         android:layout_marginStart="20dp"/>
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/btn_status_customer"
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        app:layout_constraintTop_toBottomOf="@id/header_status"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/status_choosed">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            android:text="Customer"
-                            android:textColor="@color/white"
-                            android:textAlignment="center"
-                            android:textSize="25sp"
-                            android:fontFamily="@font/inter_semibold"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/btn_status_driver"
                         android:layout_width="150dp"
@@ -279,6 +272,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/status_not_choosed">
                         <TextView
+                            android:id="@+id/user_role"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toTopOf="parent"

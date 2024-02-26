@@ -5,16 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivitySecurity">
+
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Security"
+        android:layout_margin="20dp"
+        android:layout_marginTop="56dp"
         android:fontFamily="@font/inter_semibold"
+        android:text="Security"
         android:textColor="#F3A12D"
         android:textSize="40sp"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="20dp"/>
+        tools:layout_editor_absoluteX="20dp" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/btn_change_password"
         android:layout_width="match_parent"

@@ -23,19 +23,50 @@ import org.terserah.ngaber.R
 
 class StartGameDialogFragment(activity: MainMenu) : DialogFragment() {
 
+    lateinit var firestore: FirebaseFirestore
+    lateinit var auth: FirebaseAuth
+    private var homeFragment: Fragment = MainMenuFragment()
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        firestore = Firebase.firestore
+        auth = Firebase.auth
 
         val TAG = "AA"
 
-        return activity?.let {
+        return activity?.let { activity ->
             // Use the Builder class for convenient dialog construction.
-            val builder = AlertDialog.Builder(it)
+            val builder = AlertDialog.Builder(activity)
             builder.setMessage("Switch role? \n\nFrom {} to {}")
                 .setPositiveButton("Yes") { dialog, id ->
-                    it.supportFragmentManager.beginTransaction().apply {
-                        replace(R.id.flFragment, DriverMainFragment())
 
-                        commit()
+                    var role = "CUSTOMER"
+
+                    val ref = firestore.collection("users").document(auth.currentUser?.uid.toString())
+
+                    ref.get().addOnSuccessListener {
+                        if (it.data == null) return@addOnSuccessListener
+
+                        role = it.data!!["user_role"].toString()
+
+                        println(role)
+
+                        val newData = hashMapOf(
+                            "user_role" to (if (role == "CUSTOMER") "DRIVER" else  "CUSTOMER")
+                        )
+                        ref.update(newData as Map<String, Any>)
+
+                        homeFragment = if (role == "DRIVER") {
+                            MainMenuFragment()
+                        } else {
+                            DriverMainFragment()
+                        }
+
+                        activity.supportFragmentManager.beginTransaction().apply {
+                            replace(R.id.flFragment, homeFragment)
+
+                            commit()
+                        }
                     }
                 }
                 .setNegativeButton("Cancel") { dialog, id ->
@@ -49,21 +80,46 @@ class StartGameDialogFragment(activity: MainMenu) : DialogFragment() {
 class MainMenu : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
+    private var homeFragment: Fragment = MainMenuFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
-        setCurrentFragment(MainMenuFragment())
 
         auth = Firebase.auth
         firestore = Firebase.firestore
 
+        firestore.collection("users").document(auth.currentUser?.uid.toString()).get().addOnSuccessListener {
+            if (it.data == null) return@addOnSuccessListener
+
+            homeFragment = if (it.data!!["user_role"] == "CUSTOMER") {
+                MainMenuFragment()
+            } else {
+                DriverMainFragment()
+            }
+
+            setCurrentFragment(homeFragment)
+        }
+
+        setCurrentFragment(homeFragment)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
-        bottomNavigationView.setOnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener() { it ->
+
+            firestore.collection("users").document(auth.currentUser?.uid.toString()).get().addOnSuccessListener {
+                if (it.data == null) return@addOnSuccessListener
+
+                homeFragment = if (it.data!!["user_role"] == "CUSTOMER") {
+                    MainMenuFragment()
+                } else {
+                    DriverMainFragment()
+                }
+
+            }
+
             when (it.itemId) {
-                R.id.home ->  setCurrentFragment(MainMenuFragment())
+                R.id.home ->  setCurrentFragment(homeFragment)
                 R.id.chat -> setCurrentFragment(ChatMenuFragment())
                 R.id.activity -> setCurrentFragment(ActivityMenuFragment())
                 R.id.account -> setCurrentFragment(AccountMenuFragment())

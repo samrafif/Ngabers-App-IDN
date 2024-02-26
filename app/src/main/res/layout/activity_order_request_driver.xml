@@ -5,49 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivityOrderDetailDriver">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/status_placeholder"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="20dp"
-        android:background="@drawable/status_choosed">
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/status_choosed"
-            android:src="@drawable/baseline_menu_24"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="5dp"
-            android:contentDescription="Menu Button"/>
-        <TextView
-            android:id="@+id/Driver_Status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Online"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:fontFamily="@font/inter_extrabold"
-            android:textColor="@color/white"
-            android:textSize="30sp"/>
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/Switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="active"
-            android:textColor="@color/white"
-            android:checked="true"
-            android:layout_marginEnd="10dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.cardview.widget.CardView
         android:layout_width="350dp"
         android:layout_height="350dp"
@@ -188,7 +146,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="-4dp"
                 android:fontFamily="@font/inter_extrabold"
-                android:text="IDN Boarding School Ikhwan"
+                android:text="Their Location"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@id/ic_customer_location"
